@@ -2,12 +2,18 @@
 使用Laravel 6.x 以上在Cloudflare上批量创建站点、批量删除站点、批量添加DNS记录、快速删除所有DNS记录、修改SSL类型、清除站点所有缓存内容。
 
 ## 用法
+``` bash
+composer require qbcloud/laravel-cloudflare
+```
+
 发布配置文件：
 ``` bash
 php artisan vendor:publish --provider="QbCloud\Cloudflare\Providers\CloudflareServiceProvider"
 ```
 
 ```php
+// config/cloudflare.php
+
 return [
     'email' => 'xxx@gmail.com', // Cloudflare Username
     'global_key' => 'globalxxoo', // Cloudflare Global API Key
@@ -15,6 +21,7 @@ return [
     'ip_address' => null // 默认记录值  用于添加DNS记录
 ];
 ```
+
 ```php
 use QbCloud\Cloudflare\Facades\Cloudflare;
 
@@ -38,6 +45,12 @@ Cloudflare::deleteAllRecords('xxx.com');
 
 // 修改SSL类型
 Cloudflare::updateSSLSetting('xxx.com', 'full');
+
+// 或者
+use QbCloud\Cloudflare\Cloudflare;
+
+$cloudflare = new Cloudflare();
+$cloudflare->createZones(['xxx.com','xxx.net']);
 ```
 
 ### 官方文档
