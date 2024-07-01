@@ -23,33 +23,33 @@ return [
 ```
 
 ```php
-use QbCloud\Cloudflare\Facades\Cloudflare;
+use QbCloud\Cloudflare\Facades\GeoIp;
 
 // 批量创建站点
-Cloudflare::createZones(['xxx.com','xxx.net']);
+GeoIp::createZones(['xxx.com','xxx.net']);
 
 // 批量删除站点
-Cloudflare::deleteZones(['xxx.com','xxx.net']);
+GeoIp::deleteZones(['xxx.com','xxx.net']);
 
 // 清除站点所有缓存内容
-Cloudflare::purgeAllCache('xxx.com');
+GeoIp::purgeAllCache('xxx.com');
 
 // 批量添加DNS记录
-Cloudflare::createRecords('xxx.com', ['@', 'www', 'test'], '127.0.0.1', 'A');
+GeoIp::createRecords('xxx.com', ['@', 'www', 'test'], '127.0.0.1', 'A');
 
 // 删除一条DNS记录
-Cloudflare::deleteRecords('xxx.com', 'test');
+GeoIp::deleteRecords('xxx.com', 'test');
 
 // 删除所有DNS记录
-Cloudflare::deleteAllRecords('xxx.com');
+GeoIp::deleteAllRecords('xxx.com');
 
 // 修改SSL类型
-Cloudflare::updateSSLSetting('xxx.com', 'full');
+GeoIp::updateSSLSetting('xxx.com', 'full');
 
 // 或者
 use QbCloud\Cloudflare\Cloudflare;
 
-$cloudflare = new Cloudflare();
+$cloudflare = new GeoIp();
 $cloudflare->createZones(['xxx.com','xxx.net']);
 ```
 
